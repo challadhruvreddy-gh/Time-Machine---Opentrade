@@ -1,0 +1,95 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fadeGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b6f04a" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#b6f04a" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="fadeRed" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff8a76" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ff8a76" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- card -->
+  <rect width="1200" height="630" fill="#121210"/>
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#2b2b27"/>
+
+  <!-- faint grid -->
+  <g stroke="#26261f" stroke-width="1">
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="320" x2="1200" y2="320"/>
+    <line x1="0" y1="440" x2="1200" y2="440"/>
+    <line x1="0" y1="560" x2="1200" y2="560"/>
+  </g>
+
+  <!-- price history: draws itself, then the futures appear -->
+  <g transform="translate(0,72)">
+  <path pathLength="1000" d="M 60 470 L 95 452 L 120 462 L 150 430 L 175 444 L 205 410 L 230 424 L 265 380 L 290 398 L 320 350
+           L 350 368 L 380 322 L 410 342 L 445 288 L 470 310 L 505 262 L 530 284 L 560 240 L 590 268 L 620 236
+           L 650 258 L 680 300 L 705 282 L 730 330 L 755 312 L 780 356"
+        fill="none" stroke="#e8e4d5" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"
+        stroke-dasharray="1000" stroke-dashoffset="1000">
+    <animate attributeName="stroke-dashoffset" values="1000;0;0;1000" keyTimes="0;0.35;0.92;1"
+             dur="6s" repeatCount="indefinite" calcMode="spline"
+             keySplines="0.25 0 0.3 1; 0 0 1 1; 0.4 0 0.6 1"/>
+  </path>
+  <circle cx="780" cy="356" fill="#f5c542" r="9">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.33;0.38;0.92;1" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="9;12;9" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  </g>
+
+  <!-- cutoff -->
+  <line x1="780" y1="150" x2="780" y2="580" stroke="#57564c" stroke-width="2" stroke-dasharray="6 8"/>
+  <text x="780" y="606" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold"
+        letter-spacing="3" fill="#8b8a80">YOU ARE HERE</text>
+
+  <!-- two possible futures: alternate flickering after the line lands -->
+  <g transform="translate(0,72)">
+  <g>
+    <animate attributeName="opacity" values="0;0;1;0.25;1;0.25;0" keyTimes="0;0.4;0.5;0.62;0.74;0.86;1"
+             dur="6s" repeatCount="indefinite"/>
+    <path d="M 780 356 L 830 330 L 870 344 L 920 296 L 960 312 L 1010 258 L 1050 274 L 1110 218"
+          fill="none" stroke="url(#fadeGreen)" stroke-width="4" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <text x="1128" y="226" font-family="Georgia, serif" font-size="34" fill="#b6f04a">?</text>
+  </g>
+  <g>
+    <animate attributeName="opacity" values="0;0;0.25;1;0.25;1;0" keyTimes="0;0.4;0.5;0.62;0.74;0.86;1"
+             dur="6s" repeatCount="indefinite"/>
+    <path d="M 780 356 L 830 384 L 870 372 L 920 424 L 960 408 L 1010 464 L 1050 450 L 1110 490"
+          fill="none" stroke="url(#fadeRed)" stroke-width="4" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <text x="1128" y="500" font-family="Georgia, serif" font-size="34" fill="#ff8a76">?</text>
+  </g>
+  </g>
+
+  <!-- masthead -->
+  <text x="60" y="86" font-family="Arial, sans-serif" font-size="17" font-weight="bold"
+        letter-spacing="5" fill="#8b8a80">OPENTRADE</text>
+
+  <!-- mystery badge: flickers through eras before settling on ???? -->
+  <rect x="60" y="108" width="118" height="34" rx="5" fill="#26261f"/>
+  <g font-family="Arial, sans-serif" font-size="15" font-weight="bold" letter-spacing="3" fill="#f5c542" text-anchor="middle">
+    <text x="119" y="131" opacity="0">1999
+      <animate attributeName="opacity" values="1;1;0;0;0;0;1" keyTimes="0;0.1;0.11;0.5;0.9;0.99;1" dur="6s" repeatCount="indefinite"/></text>
+    <text x="119" y="131" opacity="0">2008
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.11;0.2;0.21;1" dur="6s" repeatCount="indefinite"/></text>
+    <text x="119" y="131" opacity="0">2020
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.21;0.3;0.31;1" dur="6s" repeatCount="indefinite"/></text>
+    <text x="119" y="131" opacity="0">? ? ? ?
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.3;0.31;0.98;1" dur="6s" repeatCount="indefinite"/></text>
+  </g>
+  <text x="196" y="131" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
+        letter-spacing="3" fill="#8b8a80">DATE UNKNOWN</text>
+
+  <text x="60" y="235" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="bold"
+        fill="#f4f2ea">Time Machine</text>
+  <text x="60" y="292" font-family="Georgia, serif" font-size="30" font-style="italic" fill="#d9d6c9">
+    Guess what happened next.</text>
+
+  <!-- hourglass mark: slow spin flip -->
+  <g transform="translate(1108,74)">
+    <text x="0" y="18" font-family="Georgia, serif" font-size="52" fill="#f5c542" text-anchor="middle">⧗
+      <animateTransform attributeName="transform" type="rotate" values="0;0;180;180;360;360" keyTimes="0;0.4;0.5;0.9;0.99;1" dur="6s" repeatCount="indefinite"/>
+    </text>
+  </g>
+</svg>
