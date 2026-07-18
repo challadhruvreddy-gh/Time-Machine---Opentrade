@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Machine — OpenTrade</title>
+<meta property="og:title" content="Time Machine — OpenTrade">
+<meta property="og:description" content="A real chart. Real headlines. The date and name are hidden. Guess what happened next.">
+<meta property="og:image" content="cover.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  
+  document.documentElement.dataset.theme = localStorage.getItem('tm-theme') || 'light';
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">OpenTrade</div>
+  <div class="topbar-right">
+    <span id="round-indicator">TIME MACHINE</span>
+    <button class="theme-toggle" id="btn-theme" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+  </div>
+</header>
+
+<section class="screen active" id="screen-landing">
+  <div class="landing-inner">
+    <div class="clock-mark">⧗</div>
+    <div class="kicker">Time Machine</div>
+    <h1 class="headline">Guess what<br>happened next.</h1>
+    <p class="sub">A Real chart. Real headlines. The date and the name are hidden.<br>Make the call — then find out where the machine took you.</p>
+    <button class="btn-primary" id="btn-start">Play <span class="arrow">→</span></button>
+    <div class="landing-meta">10 rounds · settles instantly · history keeps score</div>
+  </div>
+</section>
+
+<section class="screen" id="screen-game">
+  <div class="game-inner">
+    <div class="big-timer" id="big-timer">0:15</div>
+    <div class="story-card">
+      <div class="card-top">
+        <div class="mystery-tag">
+          <span class="mystery-ticker">????</span>
+          <span class="mystery-date">DATE UNKNOWN</span>
+        </div>
+        <h2 class="story-headline" id="story-headline"></h2>
+      </div>
+      <div class="chart-wrap">
+        <svg id="chart" viewBox="0 0 640 260" preserveAspectRatio="none"></svg>
+        <div class="chart-cutoff-label">YOU ARE HERE</div>
+      </div>
+      <div class="facts">
+        <div class="facts-label">THE TAPE THAT WEEK</div>
+        <ul id="headlines"></ul>
+      </div>
+    </div>
+    <div class="question-line">Where does it go over the <u>next month</u>?</div>
+    <label class="double-down"><input type="checkbox" id="dd-check"> Double down — right = 2 pts, wrong = −1</label>
+    <div class="call-row">
+      <button class="btn-call btn-bullish" id="btn-bullish"><span class="call-arrow">←</span> BULLISH</button>
+      <button class="btn-call btn-bearish" id="btn-bearish">BEARISH <span class="call-arrow">→</span></button>
+      <button class="btn-call btn-exit" id="btn-exit">EXIT <span class="call-arrow">↺</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="screen-reveal">
+  <div class="game-inner">
+    <div class="story-card">
+      <div class="card-top">
+        <div class="mystery-tag revealed">
+          <img class="reveal-logo" id="reveal-logo" alt="" hidden>
+          <span class="mystery-ticker" id="reveal-ticker"></span>
+          <span class="mystery-date" id="reveal-date"></span>
+        </div>
+        <h2 class="story-headline" id="reveal-verdict"></h2>
+      </div>
+      <div class="chart-wrap">
+        <svg id="chart-reveal" viewBox="0 0 640 260" preserveAspectRatio="none"></svg>
+        <div class="outcome-badge" id="outcome-badge"></div>
+      </div>
+      <div class="facts">
+        <div class="facts-label">WHAT HISTORY DID</div>
+        <p class="reveal-blurb" id="reveal-blurb"></p>
+      </div>
+    </div>
+    <button class="btn-primary wide" id="btn-next">Next stop <span class="arrow">→</span></button>
+    <button class="btn-ghost wide" id="btn-exit-reveal">Exit ↺</button>
+  </div>
+</section>
+
+<section class="screen" id="screen-results">
+  <div class="landing-inner">
+    <div class="kicker">Time Machine · Run complete</div>
+    <h1 class="headline" id="final-line"></h1>
+    <div class="result-grid" id="result-grid"></div>
+    <p class="sub" id="final-sub"></p>
+    <div class="end-buttons">
+      <button class="btn-primary" id="btn-share">Share result</button>
+      <button class="btn-ghost" id="btn-again">Run it back ↺</button>
+    </div>
+    <div class="landing-meta" id="copy-note"></div>
+  </div>
+</section>
+
+<footer class="legal">
+  Time Machine is a game about market history, not investment advice. Charts use real historical daily closes (Yahoo Finance) where available. Past performance won't return your calls.
+</footer>
+
+<script src="data.js?v=13"></script>
+<script src="prices.js?v=13"></script>
+<script src="history.js?v=13"></script>
+<script src="app.js?v=13"></script>
+</body>
+</html>
