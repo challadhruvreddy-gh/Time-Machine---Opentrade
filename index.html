@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenTrade — Games</title>
+<meta property="og:title" content="Time Machine — OpenTrade">
+<meta property="og:description" content="A real chart. Real headlines. The date and name are hidden. Guess what happened next.">
+<meta property="og:image" content="cover.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2efe6; --ink: #141414; --ink-soft: #4a4a44; --line: #d8d4c6;
+  }
+  :root[data-theme="dark"] {
+    --paper: #141412; --ink: #f2efe6; --ink-soft: #a3a196; --line: #2b2b27;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'Inter', sans-serif; min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 28px; border-bottom: 1px solid var(--line);
+  }
+  .brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; }
+  .brand small {
+    display: block; font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 10px; color: var(--ink-soft); letter-spacing: 0.02em;
+  }
+  .topbar-right { display: flex; align-items: center; gap: 16px;
+    font-size: 11px; letter-spacing: 0.18em; color: var(--ink-soft); font-weight: 600; }
+  .theme-toggle {
+    background: none; border: 1px solid var(--line); color: var(--ink);
+    width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .theme-toggle:hover { border-color: var(--ink-soft); }
+
+  .featured {
+    max-width: 1100px; margin: 0 auto; padding: 64px 28px;
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center;
+    flex: 1;
+  }
+  .kicker {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 600; margin-bottom: 16px;
+  }
+  .featured h1 {
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    font-size: clamp(40px, 6vw, 64px); line-height: 1.02; margin-bottom: 18px;
+  }
+  .featured p { color: var(--ink-soft); font-size: 16px; line-height: 1.6; margin-bottom: 30px; }
+  .btn-play {
+    background: var(--ink); color: var(--paper); border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px;
+    padding: 16px 0; width: 260px; max-width: 100%; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: space-between;
+    text-decoration: none;
+  }
+  .btn-play span { padding: 0 22px; }
+  .cover-card { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px rgba(20,20,20,0.28); }
+  .cover-card img { display: block; width: 100%; height: auto; }
+  .meta-line { margin-top: 18px; font-size: 12px; color: var(--ink-soft); letter-spacing: 0.04em; }
+
+  .legal {
+    padding: 20px 28px; border-top: 1px solid var(--line);
+    font-size: 11px; color: var(--ink-soft); line-height: 1.5; max-width: 900px; margin: 0 auto;
+  }
+  @media (max-width: 820px) {
+    .featured { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
+  }
+</style>
+<script>
+  document.documentElement.dataset.theme = localStorage.getItem('tm-theme') || 'light';
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">OpenTrade<small>making investing fun :)</small></div>
+  <div class="topbar-right">
+    <span>GAMES</span>
+    <button class="theme-toggle" id="btn-theme" aria-label="Toggle dark mode">☾</button>
+  </div>
+</header>
+
+<main class="featured">
+  <div>
+    <div class="kicker">Featured</div>
+    <h1>Time Machine</h1>
+    <p>A real chart. The date and the name are hidden. Make the call — then find out where the machine took you.</p>
+    <a class="btn-play" href="game.html"><span>Play</span><span>→</span></a>
+    <div class="meta-line">10 rounds · settles instantly · history keeps score</div>
+  </div>
+  <a class="cover-card" href="game.html" aria-label="Play Time Machine">
+    <img src="cover-animated.svg" alt="Time Machine — guess what happened next">
+  </a>
+</main>
+
+<footer class="legal">
+  Time Machine is a game about market history, not investment advice. Charts use real historical daily closes (Yahoo Finance) where available. Past performance won't return your calls.
+</footer>
+
+<script>
+  const btn = document.getElementById('btn-theme');
+  const icon = () => { btn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀' : '☾'; };
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('tm-theme', next);
+    icon();
+  });
+  icon();
+</script>
+</body>
+</html>
